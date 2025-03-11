@@ -1,0 +1,262 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #343a40 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #fff !important;
+    font-size: 1rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #17a2b8 !important;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background-image: url("cricket_background.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-section p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-section .btn-primary {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    background-color: #17a2b8;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.welcome-section .btn-primary:hover {
+    background-color: #138496;
+}
+
+/* Forms (Login and Register) */
+.login-container, .register-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1, .register-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #343a40;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #17a2b8;
+    outline: none;
+}
+
+.btn-login, .btn-register {
+    width: 100%;
+    padding: 12px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover, .btn-register:hover {
+    background-color: #138496;
+}
+
+/* Flash Messages */
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash-messages ul {
+    list-style: none;
+    padding: 0;
+}
+
+.flash-messages li {
+    color: #dc3545;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Dashboard */
+.dashboard .card {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.dashboard .card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #343a40;
+}
+
+.dashboard .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Query Interface */
+.query textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.query textarea:focus {
+    border-color: #17a2b8;
+    outline: none;
+}
+
+.query button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.query button:hover {
+    background-color: #218838;
+}
+
+.query table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.query th, .query td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.query th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40;
+    color: white;
+    border-top: 1px solid #444;
+}
+
+footer a {
+    color: #17a2b8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #138496;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .welcome-section h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-section p {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .login-container, .register-container {
+        margin: 50px auto;
+        padding: 20px;
+    }
+}

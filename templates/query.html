@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Query Interface - SQL Developers{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>SQL Query Interface</h1>
+    {% if exercise_question %}
+        <div class="exercise-question mb-4">
+            <h2>Exercise Question</h2>
+            <p>{{ exercise_question }}</p>
+        </div>
+    {% endif %}
+    <p>
+        Enter your SQL query below and click <strong>Execute</strong> to see the results.
+    </p>
+
+    <!-- Query Form -->
+<form method="POST">
+    <div class="form-group">
+        <textarea name="sql_query" rows="5" class="form-control" placeholder="Enter your SQL query here..." required>
+            {% if exercise_question %}SELECT * FROM Players WHERE TeamID = (SELECT TeamID FROM Teams WHERE TeamName = 'India');{% endif %}
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Execute</button>
+</form>
+
+    <!-- Query Results -->
+    {% if result %}
+        <h2 class="mt-4">Query Results</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <!-- Error Message -->
+    {% if error %}
+        <div class="alert alert-danger mt-4">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

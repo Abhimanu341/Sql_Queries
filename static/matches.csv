@@ -1,0 +1,4 @@
+matchid,matchdate,team1id,team2id,venue,winnerid
+1,2024-03-01,1,2,Mumbai,1
+2,2024-03-02,3,4,London,3
+3,2024-03-03,5,1,Auckland,5

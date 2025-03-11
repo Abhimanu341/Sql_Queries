@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Exercises - SQL Developers{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Exercises</h1>
+    <p class="lead">
+        Test your SQL skills with our curated exercises. Each exercise includes a question and a hint to help you solve it.
+    </p>
+    <div class="row">
+        {% for exercise in exercises %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ exercise[1] }}</h2>  <!-- Display the question -->
+                        <p class="card-text"><strong>Hint:</strong> {{ exercise[3] }}</p>  <!-- Display the hint -->
+                        <form id="exercise-form-{{ exercise[0] }}" class="exercise-form">
+                            <div class="form-group">
+                                <textarea name="sql_query" rows="5" class="form-control" placeholder="Enter your SQL query here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Answer</button>
+                        </form>
+                        <div id="result-{{ exercise[0] }}" class="result-container mt-3"></div>  <!-- Result display area -->
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.exercise-form').forEach(form => {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();  // Prevent form submission
+
+            const formData = new FormData(this);  // Get form data
+            const exerciseId = this.id.split('-')[2];  // Extract exercise ID
+            const resultDiv = document.getElementById(`result-${exerciseId}`);  // Get result div
+
+            // Send AJAX request
+            fetch(`/submit_query/${exerciseId}`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the result
+                resultDiv.innerHTML = `
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Your Query:</h5>
+                            <pre><code>${data.user_query}</code></pre>
+                            <h5 class="card-title">Result:</h5>
+                            <p class="${data.message.startsWith('Error') ? 'text-danger' : 'text-success'}">${data.message}</p>
+                            ${data.user_result ? `
+                                <h5 class="card-title">Your Query Output:</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                ${Object.keys(data.user_result[0]).map(col => `<th>${col}</th>`).join('')}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${data.user_result.map(row => `
+                                                <tr>
+                                                    ${Object.values(row).map(val => `<td>${val}</td>`).join('')}
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            ` : ''}
+                            ${data.correct_query ? `
+                                <h5 class="card-title">Correct Query:</h5>
+                                <pre><code>${data.correct_query}</code></pre>
+                            ` : ''}
+                            ${data.correct_result ? `
+                                <h5 class="card-title">Correct Query Output:</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                ${Object.keys(data.correct_result[0]).map(col => `<th>${col}</th>`).join('')}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${data.correct_result.map(row => `
+                                                <tr>
+                                                    ${Object.values(row).map(val => `<td>${val}</td>`).join('')}
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `<div class="alert alert-danger">An error occurred. Please try again.</div>`;
+            });
+        });
+    });
+</script>
+{% endblock %}

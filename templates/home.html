@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Home - SQL Developers{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+    <h1>Welcome to SQL Developers!</h1>
+    <p>
+        This application is designed to help you learn and practice SQL queries in a fun and interactive way.
+    </p>
+    <a href="{{ url_for('login') }}" class="btn btn-primary">Login to Get Started</a>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - SQL Developers{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-4">Welcome, {{ current_user.email }}!</h1>
+    <p class="lead">
+        Welcome to SQL Developers! This application helps you learn and practice SQL queries using predefined cricket-related tables. Follow the steps below to get started:
+    </p>
+
+    <!-- Step 1: Understand the Tables -->
+    <div class="step-section mt-4">
+        <h2>Step 1: Understand the Tables</h2>
+        <p>
+            Before running queries, familiarize yourself with the predefined tables:
+        </p>
+        <ul>
+            <li><strong>Teams</strong>: Contains information about cricket teams.</li>
+            <li><strong>Players</strong>: Contains information about players and their roles.</li>
+            <li><strong>Matches</strong>: Contains details about cricket matches.</li>
+            <li><strong>Match Scores</strong>: Contains scores for each match.</li>
+            <li><strong>Match Results</strong>: Contains results of matches.</li>
+        </ul>
+        <p>
+            You can download these tables in PDF or CSV format for reference:
+        </p>
+        <div class="action-buttons">
+            <a href="{{ url_for('download_pdf') }}" class="btn btn-success">Download PDF</a>
+            <a href="#csv-downloads" class="btn btn-info">Download CSV</a>
+        </div>
+    </div>
+
+    <!-- Step 2: Run SQL Queries -->
+    <div class="step-section mt-4">
+        <h2>Step 2: Run SQL Queries</h2>
+        <p>
+            Use the <strong>Run SQL Query</strong> tool to execute SQL queries on the predefined tables. Here are some example queries to get you started:
+        </p>
+        <ul>
+            <li><code>SELECT * FROM Teams;</code> - View all teams.</li>
+            <li><code>SELECT * FROM Players WHERE TeamID = 1;</code> - View players in Team 1.</li>
+            <li><code>SELECT * FROM Matches WHERE WinnerID = 1;</code> - View matches won by Team 1.</li>
+        </ul>
+        <p>
+            Click the button below to start running queries:
+        </p>
+        <a href="{{ url_for('query') }}" class="btn btn-primary">Run SQL Query</a>
+    </div>
+
+    <!-- Step 3: Practice Exercises -->
+    <div class="step-section mt-4">
+        <h2>Step 3: Practice Exercises</h2>
+        <p>
+            Test your SQL skills with our curated exercises. Each exercise includes a question and a correct query to compare your results.
+        </p>
+        <a href="{{ url_for('exercises') }}" class="btn btn-primary">View Exercises</a>
+    </div>
+
+    <!-- CSV Downloads -->
+    <div class="csv-downloads mt-4" id="csv-downloads">
+        <h3>Download Tables as CSV</h3>
+        <p>
+            Download the following tables in CSV format for easy analysis:
+        </p>
+        <div class="csv-links">
+            <a href="{{ url_for('static', filename='teams.csv') }}" download class="btn btn-info">Download Teams Table (CSV)</a>
+            <a href="{{ url_for('static', filename='players.csv') }}" download class="btn btn-info">Download Players Table (CSV)</a>
+            <a href="{{ url_for('static', filename='matches.csv') }}" download class="btn btn-info">Download Matches Table (CSV)</a>
+            <a href="{{ url_for('static', filename='match_scores.csv') }}" download class="btn btn-info">Download Match Scores Table (CSV)</a>
+            <a href="{{ url_for('static', filename='match_results.csv') }}" download class="btn btn-info">Download Match Results Table (CSV)</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

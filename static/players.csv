@@ -1,0 +1,26 @@
+playerid,playername,teamid,role
+1,Virat Kohli,1,Batsman
+2,Rohit Sharma,1,Batsman
+3,Jasprit Bumrah,1,Bowler
+4,Hardik Pandya,1,All-rounder
+5,Rishabh Pant,1,Wicketkeeper
+6,Steve Smith,2,Batsman
+7,David Warner,2,Batsman
+8,Pat Cummins,2,Bowler
+9,Glenn Maxwell,2,All-rounder
+10,Alex Carey,2,Wicketkeeper
+11,Joe Root,3,Batsman
+12,Ben Stokes,3,All-rounder
+13,Jofra Archer,3,Bowler
+14,Jos Buttler,3,Wicketkeeper
+15,Jonny Bairstow,3,Batsman
+16,Babar Azam,4,Batsman
+17,Shaheen Afridi,4,Bowler
+18,Mohammad Rizwan,4,Wicketkeeper
+19,Shadab Khan,4,All-rounder
+20,Fakhar Zaman,4,Batsman
+21,Kane Williamson,5,Batsman
+22,Trent Boult,5,Bowler
+23,Tom Latham,5,Wicketkeeper
+24,James Neesham,5,All-rounder
+25,Devon Conway,5,Batsman
