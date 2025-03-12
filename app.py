@@ -463,4 +463,4 @@ def download_pdf():
     return send_file(buffer, as_attachment=True, download_name="predefined_tables.pdf", mimetype="application/pdf")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)  # Disable debug mode for production
